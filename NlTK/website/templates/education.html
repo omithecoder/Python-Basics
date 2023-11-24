@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Education Details</title>
+    <script type="text/javascript">
+        function showFieldsBasedOnSelection() {
+            var educationLevel = document.getElementById("education_level").value;
+            var educationDetailsDiv = document.getElementById("education_details");
+
+            // Hide all fields initially
+            educationDetailsDiv.innerHTML = "";
+
+            if (educationLevel === "SSC") {
+                // Show SSC-specific fields
+                educationDetailsDiv.innerHTML += `
+                    <label for="math_score">Math Score:</label>
+                    <input type="number" name="math_score" id="math_score" required><br>
+                    <label for="science_score">Science Score:</label>
+                    <input type="number" name="science_score" id="science_score" required><br>
+                    <label for="english_score">English Score:</label>
+                    <input type="number" name="english_score" id="english_score" required><br>
+                `;
+            } else if (educationLevel === "HSC") {
+                // Show HSC-specific fields
+                educationDetailsDiv.innerHTML += `
+                    <label for="hsc_stream">Select your HSC Stream:</label>
+                    <select name="hsc_stream" id="hsc_stream" required>
+                        <option value="science">Science</option>
+                        <option value="commerce">Commerce</option>
+                        <option value="arts">Arts</option>
+                    </select><br>
+                    <label for="hsc_percentage">HSC Percentage:</label>
+                    <input type="number" name="hsc_percentage" id="hsc_percentage" required><br>
+                `;
+            } else if (educationLevel === "Graduation") {
+                // Show Graduation-specific fields
+                educationDetailsDiv.innerHTML += `
+                    <label for="graduation_course">Name of Graduation Course:</label>
+                    <input type="text" name="graduation_course" id="graduation_course" required><br>
+                    <label for="graduation_cgpa">Total CGPA of Graduation:</label>
+                    <input type="number" name="graduation_cgpa" id="graduation_cgpa" required><br>
+                `;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Hello, {{ UN }}!</h1>
+    <p>Please provide your education details:</p>
+    <form method="POST" action="/test">
+        <label for="education_level">Select your latest education qualification:</label>
+        <select name="education_level" id="education_level" onchange="showFieldsBasedOnSelection()" required>
+            <option value="SSC">SSC</option>
+            <option value="HSC">HSC</option>
+            <option value="Graduation">Graduation</option>
+        </select><br>
+        <div id="education_details">
+            <!-- Additional input fields will be displayed based on the education level choice -->
+        </div>
+        <label for="hobbies">Hobbies:</label>
+        <input type="text" name="hobbies" id="hobbies" required><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

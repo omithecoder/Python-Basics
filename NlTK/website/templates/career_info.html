@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Career_Info</title>
+</head>
+<body>
+<!--Display Career Info-->
+<h1>Career Info : </h1>
+<h3>Required Skills : </h3>
+<ul>
+    {% for skill in required_skills %}
+        <li>{{ skill }}</li>
+    {% endfor %}
+</ul>
+<h3>Required Qualification : </h3>
+<ul>
+    {% for qualification in required_qualifications %}
+        <li>{{ qualification }}</li>
+    {% endfor %}
+</ul>
+<h3>Industry : </h3>
+<ul>
+
+    <li>{{ industry }}</li>
+
+</ul>
+
+</body>
+</html>

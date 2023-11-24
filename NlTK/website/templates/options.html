@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Career Guidance Options</title>
+</head>
+<body>
+    <h1>Hello, {{ UN }}!</h1>
+    <p>Choose from the following career guidance options:</p>
+    <form method="POST" action="/options">
+    <input type="hidden" name="user_name"  value={{UN}}>
+        <br>
+        <label>
+            <input type="radio" name="choice" value="1"> Complete Career Guidance (for beginners)
+        </label><br>
+        <label>
+            <input type="radio" name="choice" value="2"> Career Path Counseling (for those looking for personalized guidance)
+        </label><br>
+        <label>
+            <input type="radio" name="choice" value="3"> Career-Related Topics (for exploring specific career concerns)
+        </label><br>
+         <!-- Rest of the form fields -->
+    <input type="submit" value="Next">
+    </form>
+</body>
+</html>

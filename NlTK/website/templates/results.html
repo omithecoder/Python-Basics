@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallup StrengthsFinder Test Results</title>
+    <style>
+        .charts {
+            display: flex;
+            justify-content: space-between;
+        }
+        .chart {
+            flex-basis: 48%; /* Adjust the width as needed */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gallup StrengthsFinder Test Results</h1>
+    <h2>Top 3 Strengths:</h2>
+    <ul>
+        {% for strength, score in top_strengths %}
+            <li>{{ strength }} ({{ score }}/5)</li>
+        {% endfor %}
+    </ul>
+    <h2>Strengths Distribution:</h2>
+    <div class="charts">
+        <div class="chart">
+            <img src="data:image/png;base64,{{ img_base64 }}" alt="Strengths Distribution Pie Chart">
+        </div>
+        <div class="chart">
+            <img src="data:image/png;base64,{{ academic_img_base64 }}" alt="Academic Scores Distribution Pie Chart">
+        </div>
+    </div>
+    <h2>Recommended Career Options</h2>
+    <ul>
+        {% for career_option in matched_careers %}
+            <li>{{ career_option }}</li>
+        {% endfor %}
+    </ul>
+<!--Add a text field in which user enter the career option name of which user wants more information-->
+    <form method="POST" action="/GetInfo">
+        <input type="text" name="career_option" placeholder="Enter the career option name">
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+
+
+</body>
+</html>
